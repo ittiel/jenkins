@@ -1,7 +1,7 @@
 
 pipelineJob('mini-ci-pipeline') {
 
-    def repo = 'https://github.com/ittiel/jenkins.git'
+    def repo = 'https://github.com/ittiel/calc.git'
 
     triggers {
         scm('* * * * *')
