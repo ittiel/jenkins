@@ -25,7 +25,7 @@ ENV JENKINS_USER=admin JENKINS_PASS=admin
 ENV JAVA_OPTS "-Djenkins.install.runSetupWizard=false"
 
 # Copy seed job and pipelines definition
-ADD jobs.groovy mini-ci.groovy /tmp/
+ADD jobs.groovy  /tmp/
 
 # Copy init script
 COPY init-jenkins.groovy /usr/share/jenkins/ref/init.groovy.d/
