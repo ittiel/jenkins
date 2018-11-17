@@ -7,3 +7,4 @@
 ###jenkins login credentials
 	user: admin
 	pass: admin
+
