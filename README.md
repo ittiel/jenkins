@@ -6,7 +6,7 @@ Build docker image:
 `build jenkins: docker build -t jenkins .`
 
 
-Run docker container
+Run docker container:
 
 `run jenkins:  docker run -d -p 8080:8080 -p 50000:50000 jenkins`
 
