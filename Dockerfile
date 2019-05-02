@@ -1,5 +1,5 @@
 # Start from official base image
-FROM jenkins/jenkins:2.90
+FROM jenkins/jenkins:lts
 
 USER root
 
@@ -16,7 +16,10 @@ ENV CURL_CONNECTION_TIMEOUT=60 JENKINS_UC_DOWNLOAD="http://mirrors.jenkins-ci.or
 
 # Install plugins
 #RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
-RUN xargs /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
+#RUN xargs /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
+RUN /usr/local/bin/plugins.sh /usr/share/jenkins/ref/plugins.txt
+
+
 
 # Setup credentials
 ENV JENKINS_USER=admin JENKINS_PASS=admin
