@@ -3,8 +3,16 @@ FROM jenkins/jenkins:lts
 
 USER root
 
-# Install maven
-RUN apt-get update -y && apt-get install maven -y && rm -rf /var/lib/apt/lists/*
+# Install maven, make
+RUN apt-get update -y && apt-get install apt-utils maven build-essential uuid-runtime \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common -y \
+    && rm -rf /var/lib/apt/lists/*
+
+
 
 USER jenkins
 
@@ -12,7 +20,8 @@ USER jenkins
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 
 # Workaround plugin download issues
-ENV CURL_CONNECTION_TIMEOUT=60 JENKINS_UC_DOWNLOAD="http://mirrors.jenkins-ci.org"
+#ENV CURL_CONNECTION_TIMEOUT=60 JENKINS_UC_DOWNLOAD="http://mirrors.jenkins-ci.org"
+ENV CURL_CONNECTION_TIMEOUT=60 JENKINS_UC_DOWNLOAD="http://ftp-nyc.osuosl.org/pub/jenkins"
 
 # Install plugins
 #RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
