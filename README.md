@@ -1,4 +1,4 @@
-# Jenkins on Docker example    
+# (Slim) Jenkins on Docker example    
  This project builds a jenkins master on docker, with a predefined job and plugins     
  ##### Build docker image:       
 `docker build -t jenkins .`     
