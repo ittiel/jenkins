@@ -10,9 +10,15 @@ RUN apt-get update -y && apt-get install apt-utils maven build-essential uuid-ru
     curl \
     gnupg-agent \
     software-properties-common -y \
+    awscli \
+    jq \
     && rm -rf /var/lib/apt/lists/*
 
 
+#Kubectl
+RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+RUN chmod +x ./kubectl
+RUN mv ./kubectl /usr/local/bin/kubectl
 
 USER jenkins
 
