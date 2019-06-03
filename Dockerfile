@@ -3,7 +3,10 @@ FROM jenkins/jenkins:lts
 
 USER root
 
-# Install maven, make
+#install npm, node.js
+RUN curl -sL https://deb.nodesource.com/setup_10.x |  bash -
+
+# Install maven, makeת, jq, awscli
 RUN apt-get update -y && apt-get install apt-utils maven build-essential uuid-runtime \
     apt-transport-https \
     ca-certificates \
@@ -12,6 +15,7 @@ RUN apt-get update -y && apt-get install apt-utils maven build-essential uuid-ru
     software-properties-common -y \
     awscli \
     jq \
+    nodejs \
     && rm -rf /var/lib/apt/lists/*
 
 
