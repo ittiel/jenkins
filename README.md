@@ -4,7 +4,9 @@
 `docker build -t jenkins .`     
       
 #####  Run docker container:      
- `docker run -d -p 8080:8080 -p 50000:50000 jenkins` #### Advanced:     
+ `docker run -d -p 8080:8080 -p 50000:50000 jenkins` 
+ 
+ #### Advanced:     
 ##### Run Jenkins with **persistency** and **host docker** :  
  `docker run -d -p 8080:8080 -p 50000:50000 -v <Local folder>:/var/jenkins_home/ -v /var/run/docker.sock:/var/run/docker.sock jenkins`    
    
