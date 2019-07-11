@@ -93,6 +93,10 @@ authentication-tokens
 credentials
 matrix-auth
 
+#adndroid
+gradle
+
+
 #AWS SSM
 aws-parameter-store
 aws-credentials

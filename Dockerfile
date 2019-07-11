@@ -23,8 +23,9 @@ RUN apt-get update -y && apt-get install -y apt-utils maven build-essential uuid
     awscli \
     jq \
     nodejs \
+    gradle \
     && rm -rf /var/lib/apt/lists/*
-
+RUN pip install --upgrade pip && pip install pipenv
 
 #Kubectl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
