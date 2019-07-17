@@ -19,10 +19,6 @@ structs
 docker-workflow
 docker-commons
 
-#k8s
-kubernetes
-kubernetes-credentials
-kubernetes-cli
 
 #dependencies of k8s
 apache-httpcomponents-client-4-api
@@ -93,8 +89,6 @@ authentication-tokens
 credentials
 matrix-auth
 
-#adndroid
-gradle
 
 
 #AWS SSM
