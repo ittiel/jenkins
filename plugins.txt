@@ -100,6 +100,8 @@ aws-java-sdk
 s3
 maven-plugin
 copyartifact
+javadoc
+
 
 #Email and messaging
 mailer
