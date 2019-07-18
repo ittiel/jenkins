@@ -5,6 +5,9 @@
       
 #####  Run docker container:      
  `docker run -d -p 8080:8080 -p 50000:50000 jenkins` 
+
+ #####  Run docker-compose as daemon:  
+ `docker-compose up -d`
  
  #### Advanced:     
 ##### Run Jenkins with **persistency** and **host docker** :  
