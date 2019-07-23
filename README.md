@@ -32,3 +32,16 @@ Example:
 `docker run -d -p 8080:8080 -p 50000:50000 -v <Host persistent folder>:/var/jenkins_home/  jenkins` - Backup and auditing:    
  -- [Backup configuration with git](https://plugins.jenkins.io/scm-sync-configuration)    
  -- [Backup configuration to s3]([https://plugins.jenkins.io/s3](https://plugins.jenkins.io/s3))
+
+
+### Troubleshooting
+In case you do want to override a file/configuration, append '.override' to the name of the reference file. 
+E.g. a file named /usr/share/jenkins/ref/config.xml.override will overwrite an existing config.xml file in JENKINS_HOME.
+
+
+#### Important: 
+Due to a bug with Jenkins, restarting the docker image overrides the config.xml (including the security configuration)
+Workaround: 
+1. back up the config.xml
+2. restore it after image restart
+3. reload the local configuration from the Jenkins console.
