@@ -13,6 +13,9 @@ RUN apt-get update -y && apt-get install -y \
     wget \
     unzip \
     ansible \
+    golang-go\
+    make \
+    groff
     && rm -rf /var/lib/apt/lists/*
 
 #Terraform
