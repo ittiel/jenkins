@@ -16,7 +16,7 @@ RUN apt-get update -y && apt-get install -y \
     golang-go\
     make \
     groff \
-    rsync
+    rsync \
     && rm -rf /var/lib/apt/lists/*
 
 #Terraform
