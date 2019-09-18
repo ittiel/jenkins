@@ -102,6 +102,17 @@ maven-plugin
 copyartifact
 javadoc
 
+#golang
+#golang
+
+#warnings and reports
+#antisamy-markup-formatter
+#analysis-model-api
+#forensics-api
+#warnings-ng
+#code-coverage-api
+#cobertura
+
 
 #Email and messaging
 mailer

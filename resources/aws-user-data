@@ -1,0 +1,38 @@
+#!/bin/bash
+apt-get update -y && apt-get install -y \
+    curl \
+    awscli \
+    jq \
+    wget \
+    unzip \
+    ansible \
+    groff \
+    rsync \
+    make \
+    vim \
+    apt-transport-https ca-certificates curl gnupg2 software-properties-common \
+    openjdk-8-jdk \
+    && rm -rf /var/lib/apt/lists/*
+
+
+#Terraform
+wget https://releases.hashicorp.com/terraform/0.12.4/terraform_0.12.4_linux_amd64.zip
+unzip ./terraform_0.12.4_linux_amd64.zip -d /usr/local/bin/
+
+#Docker
+curl -fsSL get.docker.com | sh
+
+#Docker-compose
+ curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+ chmod +x /usr/local/bin/docker-compose
+ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+
+#Jenkins
+wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key |  apt-key add -
+sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+apt-get update
+apt-get -y install jenkins
+
+usermod -a -G docker jenkins
+usermod -a -G docker ubuntu
+chown ubuntu:ubuntu  /var/run/docker.sock
