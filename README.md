@@ -17,7 +17,7 @@
  `docker run -d -p 8080:8080 -p 50000:50000 --env JAVA_OPTS="-Dhudson.footerURL=http://mycompany.com -Djenkins.install.runSetupWizard=false" jenkins`   
   
 #### jenkins authentication    
-   
+Currently disabled.   
 - Default:  user: admin pass: admin  
  - Recommended: [Google login plugin](https://plugins.jenkins.io/google-login) .   
  See Google OAuth configuration  [here](https://github.com/jenkinsci/google-login-plugin/blob/master/README.md) .   

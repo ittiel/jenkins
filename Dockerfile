@@ -9,10 +9,9 @@ COPY --from=py3 /usr/local/bin /usr/local/bin
 COPY --from=py3 /usr/local/include /usr/local/include
 COPY --from=py3 /usr/local/man /usr/local/man
 COPY --from=py3 /usr/local/share /usr/local/share
-#install npm, node.js
-RUN curl -sL https://deb.nodesource.com/setup_10.x |  bash -
 
-
+RUN curl -LO http://archive.ubuntu.com/ubuntu/pool/main/libf/libffi/libffi6_3.2.1-8_amd64.deb
+RUN dpkg -i libffi6_3.2.1-8_amd64.deb
 # Install maven, makeת, jq, awscli
 RUN apt-get update -y && apt-get install -y apt-utils maven build-essential uuid-runtime \
     apt-transport-https \
@@ -22,10 +21,8 @@ RUN apt-get update -y && apt-get install -y apt-utils maven build-essential uuid
     software-properties-common  \
     awscli \
     jq \
-    nodejs \
-    gradle \
     && rm -rf /var/lib/apt/lists/*
-RUN pip install --upgrade pip && pip install pipenv
+RUN pip install --upgrade pip setuptools && pip install pipenv
 
 #Kubectl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
@@ -34,22 +31,17 @@ RUN mv ./kubectl /usr/local/bin/kubectl
 
 USER jenkins
 
-# Copy plugin list
-COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
-
 # Workaround plugin download issues
 #ENV CURL_CONNECTION_TIMEOUT=60 JENKINS_UC_DOWNLOAD="http://mirrors.jenkins-ci.org"
 ENV CURL_CONNECTION_TIMEOUT=60 JENKINS_UC_DOWNLOAD="http://ftp-nyc.osuosl.org/pub/jenkins"
 
 # Install plugins
-#RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
-#RUN xargs /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
-RUN /usr/local/bin/plugins.sh /usr/share/jenkins/ref/plugins.txt
+RUN jenkins-plugin-cli --plugins "docker-workflow job-dsl git workflow-aggregator"
 
 
 
 # Setup credentials
-ENV JENKINS_USER=admin JENKINS_PASS=admin
+# ENV JENKINS_USER=admin JENKINS_PASS=admin
 
 # Skip wizard, setup verbose logging
 ENV JAVA_OPTS "-Djenkins.install.runSetupWizard=false -DsessionTimeout=1440"

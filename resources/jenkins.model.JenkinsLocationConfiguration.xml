@@ -1,5 +1,0 @@
-<?xml version='1.1' encoding='UTF-8'?>
-<jenkins.model.JenkinsLocationConfiguration>
-  <adminAddress>devops@kin.org</adminAddress>
-  <jenkinsUrl>https://test.ecosystem.jenkins@kin.org</jenkinsUrl>
-</jenkins.model.JenkinsLocationConfiguration>
